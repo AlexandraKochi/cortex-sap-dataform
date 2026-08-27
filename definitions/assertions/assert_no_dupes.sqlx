@@ -1,0 +1,10 @@
+config { 
+  type: "assertion" 
+}
+
+SELECT 
+  vbeln, 
+  COUNT(*) as cnt
+FROM ${ref("int_sales")} 
+GROUP BY 1 
+HAVING cnt > 1

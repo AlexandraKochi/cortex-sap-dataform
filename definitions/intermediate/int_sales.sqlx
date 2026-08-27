@@ -1,0 +1,13 @@
+config { 
+  type: "incremental", 
+  schema: "cortex_intermediate",
+  uniqueKey: ["vbeln"],
+  description: "Capa Intermediate: Deduplicación incremental basada en carga delta SLT"
+}
+
+SELECT 
+  *, 
+  CURRENT_TIMESTAMP() AS processed_at
+FROM ${ref("stg_vbak")}
+
+${when(incremental(), `WHERE replicated_at > (SELECT MAX(replicated_at) FROM ${self()})`)}

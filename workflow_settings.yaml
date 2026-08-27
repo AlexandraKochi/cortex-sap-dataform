@@ -1,0 +1,4 @@
+defaultProject: cortex-training-202608
+defaultDataset: dataform
+defaultAssertionDataset: dataform_assertions
+dataformCoreVersion: 3.0.52

@@ -1,0 +1,13 @@
+config { 
+  type: "table", 
+  schema: "cortex_reporting",
+  description: "Capa Mart: Agregaciones mensuales de ventas optimizadas para BI"
+}
+
+SELECT 
+  DATE_TRUNC(order_date, MONTH) AS month,
+  COUNT(*) AS orders, 
+  SUM(net_value) AS revenue,
+  COUNT(DISTINCT customer_id) AS customers
+FROM ${ref("int_sales")} 
+GROUP BY 1

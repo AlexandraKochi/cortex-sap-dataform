@@ -1,0 +1,13 @@
+config { 
+  type: "view", 
+  schema: "cortex_staging",
+  description: "Capa Staging: Renombre y limpieza de campos técnicos de SAP VBAK"
+}
+
+SELECT 
+  vbeln, 
+  erdat AS order_date, 
+  kunnr AS customer_id,
+  ROUND(netwr, 2) AS net_value, 
+  _slt_load_ts AS replicated_at
+FROM ${ref("cortex_raw_sap", "vbak")}
