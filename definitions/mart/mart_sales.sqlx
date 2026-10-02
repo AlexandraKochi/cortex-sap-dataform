@@ -1,6 +1,7 @@
 config { 
   type: "table", 
   schema: "cortex_reporting",
+  dependencies: ["assert_no_dupes"],
   description: "Capa Mart: Agregaciones mensuales de ventas optimizadas para BI"
 }
 

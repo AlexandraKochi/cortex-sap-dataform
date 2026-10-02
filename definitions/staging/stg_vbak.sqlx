@@ -9,5 +9,5 @@ SELECT
   erdat AS order_date, 
   kunnr AS customer_id,
   ROUND(netwr, 2) AS net_value, 
-  _slt_load_ts AS replicated_at
+  slt_load_ts AS replicated_at
 FROM ${ref("cortex_raw_sap", "vbak")}
